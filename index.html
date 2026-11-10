@@ -55,11 +55,13 @@ section.s{padding-block:110px 0;scroll-margin-top:60px}
 .sh p{color:var(--muted);font-size:1.05rem}
 
 /* hero */
-.hero{padding-block:90px 30px;display:grid;grid-template-columns:minmax(0,1.6fr) minmax(280px,1fr);gap:48px;align-items:end}
+.hero{padding-block:80px 30px;display:grid;gap:0}
+.hero-row{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:48px;align-items:start;margin-top:40px}
+.hero-row>*{min-width:0}
 .hero>*{min-width:0}
-.hero h1{font-family:var(--display);font-weight:700;font-size:clamp(1.9rem,5.2vw,4rem);overflow-wrap:anywhere;line-height:.98;letter-spacing:-.045em;margin-top:18px}
+.hero h1{font-family:var(--display);font-weight:700;font-size:clamp(2.1rem,7vw,5.4rem);overflow-wrap:anywhere;line-height:.98;letter-spacing:-.045em;margin-top:18px}
 .hero h1 span{color:var(--accent)}
-.hero .pitch{font-size:1.2rem;color:var(--muted);max-width:50ch;margin-top:26px}
+.hero .pitch{font-size:1.2rem;color:var(--muted);max-width:50ch;margin-top:0}
 .hero .pitch strong{color:var(--fg);font-weight:700}
 .btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
 .btn{display:inline-flex;align-items:center;gap:10px;font:700 15px var(--body);text-decoration:none;border-radius:14px;padding:14px 20px;border:1px solid var(--line);background:var(--card);color:var(--fg);cursor:pointer;transition:transform .2s,background .2s,border-color .2s}
@@ -123,6 +125,9 @@ section.s{padding-block:110px 0;scroll-margin-top:60px}
 .proc ol{margin:0;padding:0;list-style:none;display:grid;counter-reset:e}
 .proc ol li{counter-increment:e;display:grid;grid-template-columns:70px minmax(0,1fr);gap:8px;font-size:15px;padding-block:10px;border-top:1px solid var(--line)}
 .proc ol li::before{content:"Étape " counter(e);font-family:var(--mono);font-size:12px;color:var(--accent-ink);padding-top:2px}
+.proc .dl{display:flex;align-items:center;justify-content:center;gap:10px;font-weight:700;font-size:15px;text-decoration:none;color:var(--accent-fg);background:var(--accent);border-radius:14px;padding:13px 18px;transition:transform .2s,filter .2s}
+.proc .dl:hover{transform:translateY(-2px);filter:brightness(1.08)}
+.proc .dl svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .proc details{border:1px solid var(--line);border-radius:14px;overflow:hidden}
 .proc summary{cursor:pointer;list-style:none;padding:12px 16px;font-weight:700;font-size:14px;display:flex;justify-content:space-between;align-items:center;transition:background .2s}
 .proc summary::-webkit-details-marker{display:none}
@@ -196,10 +201,11 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;padding
 
 @keyframes up{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
 .hero>*{animation:up .8s cubic-bezier(.2,.8,.2,1) both}
-.hero>*:nth-child(2){animation-delay:.12s}
+.hero>*:nth-child(2){animation-delay:.08s}
+.hero>*:nth-child(3){animation-delay:.16s}
 
-@media (max-width:1040px){
-  .hero{grid-template-columns:1fr;gap:32px}
+@media (max-width:900px){
+  .hero-row{grid-template-columns:1fr;gap:32px}
   .next{max-width:460px}
 }
 @media (max-width:920px){
@@ -245,18 +251,19 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;padding
 <div class="w" id="top">
 
   <div class="hero">
-    <div>
-      <span class="lbl">Technicien systèmes &amp; réseaux · BTS SIO SISR</span>
-      <h1>Mathéo<br>Sannajust-Dias<span>.</span></h1>
-      <p class="pitch">Je câble, je déploie et je sécurise des infrastructures. <strong>Six stages</strong> en support et en administration, une <strong>maquette réseau complète</strong> montée en équipe et un <strong>SIEM</strong> installé de A à Z.</p>
-      <div class="btns">
+    <span class="lbl">Technicien systèmes &amp; réseaux · BTS SIO SISR</span>
+    <h1>Mathéo<br>Sannajust-Dias<span>.</span></h1>
+    <div class="hero-row">
+      <div>
+        <p class="pitch">Je câble, je déploie et je sécurise des infrastructures. <strong>Six stages</strong> en support et en administration, une <strong>maquette réseau complète</strong> montée en équipe et un <strong>SIEM</strong> installé de A à Z.</p>
+        <div class="btns">
         <a class="btn primary" href="#projets">Voir mes projets
           <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7"/></svg></a>
         <button class="btn" id="hero-copy" type="button">
           <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>Copier mon e-mail</button>
       </div>
-    </div>
-    <div class="card next">
+      </div>
+      <div class="card next">
       <span class="lbl">Prochain stage</span>
       <span class="badge">✓ Confirmé</span>
       <p class="co">Fideliance Digital</p>
@@ -265,6 +272,7 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;padding
         <span class="arrow">→</span>
         <div style="text-align:right"><b>06 févr.</b><span>2027</span></div>
       </div>
+    </div>
     </div>
   </div>
 
@@ -349,7 +357,7 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;padding
     <div class="sh">
       <span class="lbl">Documentation · Projet M2L</span>
       <h2>Mes <em>procédures</em></h2>
-      <p>Six procédures techniques rédigées pour la maquette M2L : de l'installation à la vérification, avec les commandes et la configuration utilisées.</p>
+      <p>Six procédures techniques rédigées pour la maquette M2L, de l'installation à la vérification. Chaque procédure complète est téléchargeable en PDF.</p>
     </div>
     <div class="procs">
 
@@ -369,6 +377,7 @@ Enable DHCP server on LAN? n
 172.16.2.224/27   VLAN 2 - Informatique
 192.168.1.0/28    Serveurs
 172.16.99.16/28   Réseau interne M2L</code></pre></details>
+        <a class="dl" href="procedures/procedure-pfsense.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>Télécharger le PDF</a>
         <div class="chips"><span>pfSense</span><span>Proxmox</span><span>Routage statique</span><span>Règles pare-feu</span></div>
       </article>
 
@@ -395,6 +404,7 @@ subnet 172.16.10.0 netmask 255.255.255.0 {
     range 172.16.10.1 172.16.10.60;
   }
 }</code></pre></details>
+        <a class="dl" href="procedures/procedure-dhcp.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>Télécharger le PDF</a>
         <div class="chips"><span>isc-dhcp-server</span><span>Failover</span><span>VLAN</span><span>Debian</span></div>
       </article>
 
@@ -418,6 +428,7 @@ listen stats
 
 haproxy -c -f /etc/haproxy/haproxy.cfg
 systemctl restart haproxy</code></pre></details>
+        <a class="dl" href="procedures/procedure-haproxy.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>Télécharger le PDF</a>
         <div class="chips"><span>HAProxy</span><span>Load balancing</span><span>Health check</span></div>
       </article>
 
@@ -440,6 +451,7 @@ mariadb db_glpi &lt; /home/transfert/glpi.sql
 nc -zv 192.168.1.4 3306
 curl -sS -o /dev/null -w 'HTTP=%{http_code}
 ' http://127.0.0.1/glpi/</code></pre></details>
+        <a class="dl" href="procedures/procedure-glpi.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>Télécharger le PDF</a>
         <div class="chips"><span>GLPI</span><span>LDAP / AD</span><span>MariaDB</span><span>Apache</span><span>Migration</span></div>
       </article>
 
@@ -456,6 +468,7 @@ a2ensite wordpress.conf
 a2dissite 000-default.conf
 a2enmod rewrite
 systemctl restart apache2</code></pre></details>
+        <a class="dl" href="procedures/procedure-wordpress.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>Télécharger le PDF</a>
         <div class="chips"><span>WordPress</span><span>Apache</span><span>mod_rewrite</span><span>Multisite</span></div>
       </article>
 
@@ -475,6 +488,7 @@ local_enable=YES
 write_enable=YES
 userlist_enable=YES
 userlist_deny=NO</code></pre></details>
+        <a class="dl" href="procedures/procedure-ftp.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>Télécharger le PDF</a>
         <div class="chips"><span>vsftpd</span><span>UFW</span><span>Linux</span></div>
       </article>
 
