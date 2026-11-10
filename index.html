@@ -181,6 +181,34 @@ section.s{padding-block:110px 0;scroll-margin-top:60px}
 .bloc li span{font-family:var(--mono);font-size:11.5px;font-weight:400;color:var(--muted)}
 @media (max-width:1040px){.blocs{grid-template-columns:1fr}}
 
+/* trello */
+.trello{margin-top:18px}
+.tr-head{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px;align-items:end}
+.tr-head>div:first-child{display:grid;gap:10px;min-width:0}
+.tr-stats{display:flex;gap:10px}
+.tr-stats div{background:var(--bg-2);border-radius:14px;padding:12px 16px;display:grid;text-align:center;min-width:76px}
+.tr-stats b{font-family:var(--display);font-weight:600;font-size:1.4rem;color:var(--accent)}
+.tr-stats span{font-size:12px;color:var(--muted)}
+.board{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(230px,1fr);gap:12px;overflow-x:auto;padding-bottom:8px;scrollbar-width:thin}
+.tcol{background:var(--bg-2);border-radius:16px;padding:12px;display:flex;flex-direction:column;gap:8px;align-self:start;max-height:640px;overflow-y:auto;scrollbar-width:thin}
+.th{position:sticky;top:-12px;background:var(--bg-2);z-index:1;margin:-12px -12px 0;padding:14px 16px 8px!important}
+.th{display:flex;justify-content:space-between;align-items:center;font-weight:800;font-size:14px;padding:2px 4px 6px}
+.th em{font-style:normal;font-family:var(--mono);font-size:12px;color:var(--muted);background:var(--card);border-radius:999px;padding:1px 8px}
+.tc{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px;display:grid;gap:5px}
+.tc.mine{border-color:var(--accent);box-shadow:inset 3px 0 0 var(--accent)}
+.tl-labs{display:flex;gap:4px;flex-wrap:wrap}
+.tl-labs i,.tr-leg i{display:inline-block;width:30px;height:6px;border-radius:99px;background:var(--lc)}
+.tn{font-size:14px;font-weight:700;line-height:1.35;display:flex;justify-content:space-between;gap:8px}
+.tn .ok{color:var(--accent);font-size:13px}
+.td{font-size:12.5px;color:var(--muted);font-family:var(--mono);line-height:1.45;overflow-wrap:anywhere}
+.tav{display:flex;gap:4px;justify-content:flex-end}
+.av{display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--line);color:var(--fg);font-family:var(--mono);font-size:10px;font-weight:500}
+.av.me{background:var(--accent);color:var(--accent-fg)}
+.tr-leg{display:flex;flex-wrap:wrap;gap:8px 16px;font-size:12.5px;color:var(--muted)}
+.tr-leg span{display:inline-flex;align-items:center;gap:7px}
+.tr-leg i{width:18px}
+@media (max-width:700px){.tr-head{grid-template-columns:1fr}.tr-stats{justify-content:flex-start}}
+
 .edu{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
 .edu .card .yr{font-family:var(--display);font-weight:600;font-size:1.3rem;color:var(--accent)}
 
@@ -278,7 +306,7 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;padding
 
   <div class="strip">
     <div><b>6 stages</b><span>en entreprise depuis 2022</span></div>
-    <div><b>6 procédures</b><span>rédigées pour le projet M2L</span></div>
+    <div><b>6 procédures</b><span>regroupées pour le projet M2L</span></div>
     <div><b>BTS SIO</b><span>option SISR, 2ᵉ année</span></div>
     <div><b>Melun (77)</b><span>permis B, véhiculé</span></div>
   </div>
@@ -297,12 +325,12 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;padding
         <h3>Projet M2L : une infrastructure complète sur maquette</h3>
         <p class="muted">À partir d'un cahier des charges : pare-feu, switch de niveau 3, virtualisation, annuaire, supervision et sécurité.</p>
         <ul class="mine">
-          <li>Câblage et brassage de toute la maquette</li>
-          <li>Serveur TFTP de sauvegarde des configurations</li>
-          <li>Supervision sécurité avec Wazuh</li>
-          <li>Rédaction des procédures et suivi sur Trello</li>
+          <li>Supervision : Wazuh (SIEM) et Zabbix</li>
+          <li>Câblage et brassage de la maquette</li>
+          <li>Gestion du projet sur Trello et regroupement des procédures de l'équipe</li>
+          <li>À venir : règles pfSense, serveur mail Postfix, sauvegardes, tests finaux</li>
         </ul>
-        <div class="chips"><span>pfSense</span><span>Switch N3</span><span>Proxmox</span><span>Active Directory</span><span>DHCP</span><span>GLPI</span><span>Grafana</span><span>Wazuh</span><span>TFTP</span></div>
+        <div class="chips"><span>Wazuh</span><span>Zabbix</span><span>Câblage</span><span>Trello</span><span>pfSense</span><span>Proxmox</span><span>Active Directory</span><span>GLPI</span></div>
       </div>
       <div>
         <div class="dia">
@@ -316,13 +344,26 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;padding
             <g class="n"><rect x="18" y="248" width="84" height="52" rx="10"/><text x="60" y="271" text-anchor="middle">AD</text><text class="s" x="60" y="288" text-anchor="middle">DNS</text></g>
             <g class="n"><rect x="110" y="248" width="80" height="52" rx="10"/><text x="150" y="271" text-anchor="middle">DHCP</text><text class="s" x="150" y="288" text-anchor="middle">adresses</text></g>
             <g class="n"><rect x="198" y="248" width="74" height="52" rx="10"/><text x="235" y="271" text-anchor="middle">GLPI</text><text class="s" x="235" y="288" text-anchor="middle">parc</text></g>
-            <g class="n"><rect x="280" y="248" width="80" height="52" rx="10"/><text x="320" y="271" text-anchor="middle">Grafana</text><text class="s" x="320" y="288" text-anchor="middle">métriques</text></g>
+            <g class="n me"><rect x="280" y="248" width="80" height="52" rx="10"/><text x="320" y="271" text-anchor="middle">Zabbix</text><text class="s" x="320" y="288" text-anchor="middle">supervision</text></g>
             <g class="n me"><rect x="368" y="248" width="94" height="52" rx="10"/><text x="415" y="271" text-anchor="middle">Wazuh</text><text class="s" x="415" y="288" text-anchor="middle">SIEM</text></g>
-            <g class="n me"><rect x="470" y="248" width="72" height="52" rx="10"/><text x="506" y="271" text-anchor="middle">TFTP</text><text class="s" x="506" y="288" text-anchor="middle">backup</text></g>
+            <g class="n"><rect x="470" y="248" width="72" height="52" rx="10"/><text x="506" y="271" text-anchor="middle">FTP</text><text class="s" x="506" y="288" text-anchor="middle">fichiers</text></g>
           </svg>
-          <div class="key"><i></i>Câblage, Wazuh et TFTP : mes parties</div>
+          <div class="key"><i></i>En orange : Wazuh et Zabbix, mes serveurs. Câblage de toute la maquette.</div>
         </div>
       </div>
+    </article>
+
+
+    <article class="card trello" id="trello">
+      <div class="tr-head">
+        <div><span class="lbl">Gestion de projet · créé par moi</span><h3 class="big3">Le tableau Trello du projet M2L</h3>
+        <p class="muted">Une colonne par état d'avancement, une couleur par partie du projet. Chacun déplace ses cartes et rédige la procédure de ce qu'il a fait. Mes cartes sont surlignées.</p></div>
+        <div class="tr-stats"><div><b>34</b><span>tâches</span></div><div><b>4</b><span>membres</span></div><div><b>10</b><span>parties</span></div></div>
+      </div>
+      <div class="board" tabindex="0" aria-label="Copie en lecture seule du tableau Trello"><div class="tcol"><div class="th"><span>À faire</span><em>7</em></div><div class="tc"><div class="tl-labs"><i style="--lc:#4C8DF6" title="Réseau"></i></div><p class="tn">Spanning-Tree</p><p class="td">Boucle SWLIGUES1-2-3, SWLIGUES1 en root.</p><div class="tav"><b class="av" title="Célestin">CP</b></div></div><div class="tc mine"><div class="tl-labs"><i style="--lc:#FF6A1A" title="Prioritaire"></i><i style="--lc:#F0383E" title="Sécurité"></i></div><p class="tn">Règles pfSense</p><p class="td">Voir carte Règles d&#x27;accès.</p><div class="tav"><b class="av me" title="Mathéo">MS</b></div></div><div class="tc mine"><div class="tl-labs"><i style="--lc:#9B6BFF" title="Serveurs"></i></div><p class="tn">Postfix</p><p class="td">172.16.2.252</p><div class="tav"><b class="av me" title="Mathéo">MS</b></div></div><div class="tc"><div class="tl-labs"><i style="--lc:#9BD84A" title="VoIP / WiFi"></i></div><p class="tn">WiFi</p><p class="td">INVITE (VLAN 13) et PERMANENT (VLAN 14), WPA2</p><div class="tav"><b class="av" title="Célestin">CP</b></div></div><div class="tc mine"><div class="tl-labs"><i style="--lc:#F273B4" title="DMZ privée"></i></div><p class="tn">Backup</p><p class="td">192.168.1.6 - sauvegarde des sites et des bases</p><div class="tav"><b class="av me" title="Mathéo">MS</b></div></div><div class="tc"><div class="tl-labs"><i style="--lc:#8A8A8A" title="Postes"></i></div><p class="tn">Postes des ligues</p><p class="td">Windows / Linux + agent GLPI</p><div class="tav"><b class="av" title="Célestin">CP</b></div></div><div class="tc mine"><div class="tl-labs"><i style="--lc:#B49CFF" title="Doc"></i></div><p class="tn">Tests finaux</p><div class="tav"><b class="av me" title="Mathéo">MS</b><b class="av" title="Célestin">CP</b><b class="av" title="Mohamed">MO</b></div></div></div>
+<div class="tcol"><div class="th"><span>En cours</span><em>11</em></div><div class="tc"><div class="tl-labs"><i style="--lc:#9BD84A" title="VoIP / WiFi"></i></div><p class="tn">Asterisk</p><p class="td">172.16.2.244 - VLAN 5</p><div class="tav"><b class="av" title="Célestin">CP</b></div></div><div class="tc"><div class="tl-labs"><i style="--lc:#F273B4" title="DMZ privée"></i></div><p class="tn">WEB1</p><p class="td">192.168.1.2 - WordPress</p><div class="tav"><b class="av" title="Mohamed">MO</b></div></div><div class="tc"><div class="tl-labs"><i style="--lc:#F273B4" title="DMZ privée"></i></div><p class="tn">WEB2</p><p class="td">192.168.1.3 - copie de WEB1</p><div class="tav"><b class="av" title="Mohamed">MO</b></div></div><div class="tc"><div class="tl-labs"><i style="--lc:#4C8DF6" title="Réseau"></i></div><p class="tn">Routeurs RTM2L<span class="ok" title="Terminé">✓</span></p><div class="tav"><b class="av" title="Célestin">CP</b></div></div><div class="tc"><div class="tl-labs"><i style="--lc:#4C8DF6" title="Réseau"></i></div><p class="tn">Routeurs RTLIGUES<span class="ok" title="Terminé">✓</span></p><div class="tav"><b class="av" title="Célestin">CP</b></div></div><div class="tc"><div class="tl-labs"><i style="--lc:#F273B4" title="DMZ privée"></i></div><p class="tn">SGBD 1<span class="ok" title="Terminé">✓</span></p><p class="td">192.168.1.4</p><div class="tav"><b class="av" title="Mohamed">MO</b></div></div><div class="tc"><div class="tl-labs"><i style="--lc:#F273B4" title="DMZ privée"></i></div><p class="tn">SGBD 2<span class="ok" title="Terminé">✓</span></p><p class="td">192.168.1.5</p><div class="tav"><b class="av" title="Mohamed">MO</b></div></div><div class="tc mine"><div class="tl-labs"><i style="--lc:#4FC3F7" title="Supervision"></i></div><p class="tn">Wazuh<span class="ok" title="Terminé">✓</span></p><p class="td">172.16.2.251</p><div class="tav"><b class="av me" title="Mathéo">MS</b></div></div><div class="tc mine"><div class="tl-labs"><i style="--lc:#4FC3F7" title="Supervision"></i></div><p class="tn">Zabbix<span class="ok" title="Terminé">✓</span></p><p class="td">172.16.2.248</p><div class="tav"><b class="av me" title="Mathéo">MS</b></div></div><div class="tc mine"><div class="tl-labs"><i style="--lc:#B49CFF" title="Doc"></i></div><p class="tn">Câblage<span class="ok" title="Terminé">✓</span></p><div class="tav"><b class="av me" title="Mathéo">MS</b><b class="av" title="Mohamed">MO</b></div></div><div class="tc mine"><div class="tl-labs"><i style="--lc:#B49CFF" title="Doc"></i></div><p class="tn">Auto-évaluation<span class="ok" title="Terminé">✓</span></p><div class="tav"><b class="av me" title="Mathéo">MS</b><b class="av" title="Célestin">CP</b><b class="av" title="Mohamed">MO</b></div></div></div>
+<div class="tcol"><div class="th"><span>Terminé</span><em>16</em></div><div class="tc mine"><div class="tl-labs"><i style="--lc:#B49CFF" title="Doc"></i></div><p class="tn">Trello</p><div class="tav"><b class="av me" title="Mathéo">MS</b><b class="av" title="Célestin">CP</b><b class="av" title="Mohamed">MO</b></div></div><div class="tc"><div class="tl-labs"><i style="--lc:#B49CFF" title="Doc"></i></div><p class="tn">Maquette<span class="ok" title="Terminé">✓</span></p><div class="tav"><b class="av" title="Mohamed">MO</b></div></div><div class="tc mine"><div class="tl-labs"><i style="--lc:#B49CFF" title="Doc"></i></div><p class="tn">Procédures<span class="ok" title="Terminé">✓</span></p><p class="td">Chacun fait les procédures de ses tâches, Mathéo regroupe tout.</p><div class="tav"><b class="av me" title="Mathéo">MS</b></div></div><div class="tc"><div class="tl-labs"><i style="--lc:#FFA043" title="DMZ publique"></i></div><p class="tn">HAProxy</p><p class="td">192.168.0.2 - vers WEB1 et WEB2</p><div class="tav"><b class="av" title="Nathan">NA</b></div></div><div class="tc"><div class="tl-labs"><i style="--lc:#4C8DF6" title="Réseau"></i></div><p class="tn">SSH<span class="ok" title="Terminé">✓</span></p><div class="tav"><b class="av" title="Célestin">CP</b></div></div><div class="tc"><div class="tl-labs"><i style="--lc:#9B6BFF" title="Serveurs"></i><i style="--lc:#FF6A1A" title="Prioritaire"></i></div><p class="tn">Proxmox<span class="ok" title="Terminé">✓</span></p><p class="td">LAN .241, DMZ publique 192.168.0.1, DMZ privée 192.168.1.1</p><div class="tav"><b class="av" title="Mohamed">MO</b></div></div><div class="tc"><div class="tl-labs"><i style="--lc:#9B6BFF" title="Serveurs"></i></div><p class="tn">DHCP 1 &amp; 2<span class="ok" title="Terminé">✓</span></p><p class="td">172.16.2.246</p><div class="tav"><b class="av" title="Nathan">NA</b></div></div><div class="tc"><div class="tl-labs"><i style="--lc:#4C8DF6" title="Réseau"></i></div><p class="tn">Switch N2<span class="ok" title="Terminé">✓</span></p><div class="tav"></div></div><div class="tc"><div class="tl-labs"><i style="--lc:#9B6BFF" title="Serveurs"></i></div><p class="tn">Nextcloud<span class="ok" title="Terminé">✓</span></p><p class="td">172.16.2.249 - un dossier par ligue + un dossier commun en lecture seu</p><div class="tav"><b class="av" title="Mohamed">MO</b></div></div><div class="tc"><div class="tl-labs"><i style="--lc:#9B6BFF" title="Serveurs"></i><i style="--lc:#FF6A1A" title="Prioritaire"></i></div><p class="tn">AD 1 &amp; 2 / DNS<span class="ok" title="Terminé">✓</span></p><p class="td">172.16.2.242 - M2L.local</p><div class="tav"><b class="av" title="Mohamed">MO</b></div></div><div class="tc"><div class="tl-labs"><i style="--lc:#4FC3F7" title="Supervision"></i></div><p class="tn">Grafana<span class="ok" title="Terminé">✓</span></p><p class="td">Affiche Zabbix et Wazuh</p><div class="tav"><b class="av" title="Nathan">NA</b></div></div><div class="tc"><div class="tl-labs"><i style="--lc:#FFA043" title="DMZ publique"></i></div><p class="tn">TFTP &amp; FTP<span class="ok" title="Terminé">✓</span></p><p class="td">192.168.0.3</p><div class="tav"><b class="av" title="Nathan">NA</b></div></div><div class="tc"><div class="tl-labs"><i style="--lc:#F0383E" title="Sécurité"></i></div><p class="tn">pfSense<span class="ok" title="Terminé">✓</span></p><div class="tav"><b class="av" title="Nathan">NA</b></div></div><div class="tc"><div class="tl-labs"><i style="--lc:#4C8DF6" title="Réseau"></i><i style="--lc:#FF6A1A" title="Prioritaire"></i></div><p class="tn">Switch N3<span class="ok" title="Terminé">✓</span></p><div class="tav"><b class="av" title="Célestin">CP</b></div></div><div class="tc"><div class="tl-labs"><i style="--lc:#4C8DF6" title="Réseau"></i></div><p class="tn">VLAN<span class="ok" title="Terminé">✓</span></p><p class="td">VLAN 2, 5, 10 à 14, 99</p><div class="tav"><b class="av" title="Célestin">CP</b></div></div><div class="tc"><div class="tl-labs"><i style="--lc:#4FC3F7" title="Supervision"></i></div><p class="tn">GLPI<span class="ok" title="Terminé">✓</span></p><p class="td">172.16.2.247</p><div class="tav"><b class="av" title="Nathan">NA</b></div></div></div></div>
+      <div class="tr-leg"><span><i style="--lc:#4C8DF6"></i>Réseau</span><span><i style="--lc:#F0383E"></i>Sécurité</span><span><i style="--lc:#9B6BFF"></i>Serveurs</span><span><i style="--lc:#9BD84A"></i>VoIP / WiFi</span><span><i style="--lc:#F273B4"></i>DMZ privée</span><span><i style="--lc:#8A8A8A"></i>Postes</span><span><i style="--lc:#B49CFF"></i>Doc</span><span><i style="--lc:#4FC3F7"></i>Supervision</span><span><i style="--lc:#FFA043"></i>DMZ publique</span><span><b class="av me">MS</b>Mes cartes</span></div>
     </article>
 
     <div class="duo">
@@ -356,8 +397,8 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;padding
   <section class="s" id="procedures">
     <div class="sh">
       <span class="lbl">Documentation · Projet M2L</span>
-      <h2>Mes <em>procédures</em></h2>
-      <p>Six procédures techniques rédigées pour la maquette M2L, de l'installation à la vérification. Chaque procédure complète est téléchargeable en PDF.</p>
+      <h2>Les <em>procédures</em> du projet</h2>
+      <p>Chaque membre de l'équipe documente ce qu'il installe, et je regroupe toute la documentation. Voici six procédures de la maquette, de l'installation à la vérification, téléchargeables en PDF.</p>
     </div>
     <div class="procs">
 
@@ -577,19 +618,19 @@ userlist_deny=NO</code></pre></details>
     <div class="skills">
       <div class="card sk">
         <div class="sk-h"><span class="ico"><svg viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="5" rx="1"/><rect x="2" y="16" width="6" height="5" rx="1"/><rect x="16" y="16" width="6" height="5" rx="1"/><path d="M12 8v4M5 16v-4h14v4"/></svg></span><h3>Réseau</h3></div>
-        <ul><li>Administration de réseau interne<span>OPH 77 · Info 26</span></li><li>Configuration d'équipements réseau<span>Fideliance</span></li><li>TCP/IP · VLAN · DHCP · DNS<span>M2L</span></li><li>pfSense : routes statiques, règles<span>M2L</span></li><li>DHCP redondant (failover)<span>M2L</span></li><li>HAProxy, répartition de charge<span>M2L</span></li><li>Cisco IOS · TFTP<span>M2L</span></li><li>Câblage et brassage<span>M2L</span></li></ul>
+        <ul><li>Administration de réseau interne<span>OPH 77 · Info 26</span></li><li>Configuration d'équipements réseau<span>Fideliance</span></li><li>TCP/IP · VLAN · DHCP · DNS<span>BTS</span></li><li>pfSense<span>BTS</span></li><li>Cisco IOS<span>BTS</span></li><li>Câblage et brassage<span>M2L</span></li></ul>
       </div>
       <div class="card sk">
         <div class="sk-h"><span class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01"/></svg></span><h3>Systèmes</h3></div>
-        <ul><li>Déploiement Windows 10/11<span>Fideliance</span></li><li>Administration de serveurs Debian<span>Fideliance · VPS</span></li><li>Windows Server<span>BTS</span></li><li>Active Directory · GPO<span>M2L · BTS</span></li><li>Ubuntu Server<span>Wazuh</span></li><li>Apache · MariaDB · PHP<span>M2L</span></li><li>Serveur FTP vsftpd<span>M2L</span></li></ul>
+        <ul><li>Déploiement Windows 10/11<span>Fideliance</span></li><li>Administration de serveurs Debian<span>Fideliance · VPS</span></li><li>Windows Server<span>BTS</span></li><li>Active Directory · GPO<span>BTS</span></li><li>Ubuntu Server<span>Wazuh</span></li></ul>
       </div>
       <div class="card sk">
         <div class="sk-h"><span class="ico"><svg viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg></span><h3>Sécurité</h3></div>
-        <ul><li>Blocage d'accès Entra ID<span>Fideliance</span></li><li>Double authentification<span>Fideliance</span></li><li>Sécurisation de NAS<span>Fideliance</span></li><li>Wazuh (SIEM-XDR)<span>Lab · M2L</span></li><li>Reverse proxy Caddy · TLS<span>VPS</span></li><li>Pare-feu UFW<span>M2L</span></li></ul>
+        <ul><li>Blocage d'accès Entra ID<span>Fideliance</span></li><li>Double authentification<span>Fideliance</span></li><li>Sécurisation de NAS<span>Fideliance</span></li><li>Wazuh (SIEM-XDR)<span>M2L · Lab</span></li><li>Supervision Zabbix<span>M2L</span></li><li>Reverse proxy Caddy · TLS<span>VPS</span></li></ul>
       </div>
       <div class="card sk">
         <div class="sk-h"><span class="ico"><svg viewBox="0 0 24 24"><path d="M12 3l9 5-9 5-9-5z"/><path d="M3 13l9 5 9-5"/></svg></span><h3>Parc &amp; virtualisation</h3></div>
-        <ul><li>Microsoft Intune<span>Fideliance</span></li><li>Azure AD Connect<span>Fideliance</span></li><li>Virtualisation Hyper-V<span>Fideliance</span></li><li>Proxmox<span>M2L</span></li><li>GLPI relié à l'AD (LDAP)<span>M2L</span></li><li>Migration de base de données<span>M2L</span></li></ul>
+        <ul><li>Microsoft Intune<span>Fideliance</span></li><li>Azure AD Connect<span>Fideliance</span></li><li>Virtualisation Hyper-V<span>Fideliance</span></li><li>Proxmox<span>BTS</span></li><li>Gestion de projet Trello<span>M2L</span></li><li>Documentation technique<span>M2L</span></li></ul>
       </div>
       <div class="card sk wide">
         <div class="sk-h"><span class="ico"><svg viewBox="0 0 24 24"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="2" y="14" width="5" height="6" rx="2"/><rect x="17" y="14" width="5" height="6" rx="2"/></svg></span><h3>Support &amp; terrain</h3></div>
@@ -626,36 +667,33 @@ userlist_deny=NO</code></pre></details>
         <h3>Support et mise à disposition de services informatiques</h3>
         <ul>
           <li>Support utilisateur N1/N2 et dépannage sur site<span>Fideliance · Info 26</span></li>
-          <li>Gestion du parc et des tickets avec GLPI<span>M2L</span></li>
           <li>Déploiement et préparation de postes Windows<span>Fideliance</span></li>
-          <li>Mise à disposition de sites avec WordPress multisite<span>M2L</span></li>
+          <li>Gestion du projet M2L sur Trello<span>M2L</span></li>
+          <li>Regroupement de la documentation technique de l'équipe<span>M2L</span></li>
           <li>Présence en ligne : ce portfolio sur GitHub Pages<span>Projet perso</span></li>
-          <li>Documentation : six procédures techniques<span>M2L</span></li>
         </ul>
       </article>
       <article class="card bloc">
         <div class="bloc-h"><span class="code">BC02</span><span class="lbl">Option A · SISR</span></div>
         <h3>Administration des systèmes et des réseaux</h3>
         <ul>
-          <li>Pare-feu et routage pfSense<span>M2L</span></li>
-          <li>DHCP redondant avec failover<span>M2L</span></li>
-          <li>Répartition de charge HAProxy<span>M2L</span></li>
-          <li>Active Directory, LDAP, GPO<span>M2L · BTS</span></li>
-          <li>Virtualisation Proxmox et Hyper-V<span>M2L · Fideliance</span></li>
+          <li>Supervision de l'infrastructure avec Zabbix<span>M2L</span></li>
+          <li>Câblage et brassage de la maquette<span>M2L</span></li>
           <li>Gestion de parc Intune et Azure AD Connect<span>Fideliance</span></li>
-          <li>Administration Debian, serveur FTP<span>Fideliance · M2L</span></li>
+          <li>Virtualisation de serveurs sous Hyper-V<span>Fideliance</span></li>
+          <li>Administration de serveurs Debian<span>Fideliance · VPS</span></li>
+          <li>Administration de réseau interne<span>OPH 77 · Info 26</span></li>
         </ul>
       </article>
       <article class="card bloc">
         <div class="bloc-h"><span class="code">BC04</span><span class="lbl">Option A · SISR</span></div>
         <h3>Cybersécurité des services informatiques</h3>
         <ul>
-          <li>Supervision de sécurité avec le SIEM Wazuh<span>Lab · M2L</span></li>
+          <li>Supervision de sécurité avec le SIEM Wazuh<span>M2L · Lab</span></li>
           <li>Protection de comptes face à la faille Kali365<span>Fideliance</span></li>
           <li>Double authentification et sécurisation de NAS<span>Fideliance</span></li>
-          <li>Règles de pare-feu pfSense et UFW<span>M2L</span></li>
-          <li>Accès limité à une IP sur la base de données<span>M2L</span></li>
           <li>HTTPS et reverse proxy sur serveur Debian<span>Projet perso</span></li>
+          <li>À venir : règles de pare-feu pfSense<span>M2L</span></li>
         </ul>
       </article>
     </div>
