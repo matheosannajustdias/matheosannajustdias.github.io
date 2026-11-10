@@ -1,0 +1,482 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Portfolio de Mathéo Sannajust-Dias, technicien systèmes et réseaux (BTS SIO SISR).">
+<title>Mathéo Sannajust-Dias</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one long, airy scrolling page — full-width sections, cards inside. Single dark look: black + orange. */
+:root{
+  --bg:#0A0A0A; --bg-2:#141414; --card:#121212; --line:#252525; --fg:#F4F4F2; --muted:#A3A3A0;
+  --accent:#FF6A1A; --accent-fg:#140800; --accent-soft:#2A1608; --accent-ink:#FF8B4D;
+  --deep:#181818; --deep-fg:#F4F4F2; --deep-muted:#A3A3A0; --deep-line:#2E2E2E;
+  color-scheme:dark;
+  --display:"Unbounded","Arial Black",system-ui,sans-serif;
+  --body:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  --r:22px;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16.5px;line-height:1.6;padding-inline:20px;padding-block:0 0;transition:background .35s,color .35s}
+p{margin:0}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+.w{max-width:1140px;margin:0 auto}
+.lbl{font-family:var(--mono);font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.muted{color:var(--muted)}
+h1,h2,h3{margin:0;text-wrap:balance}
+h3{font-size:1.1rem;font-weight:800;line-height:1.3}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:30px;display:flex;flex-direction:column;gap:14px;min-width:0;
+  transition:transform .3s cubic-bezier(.2,.8,.2,1),border-color .3s,background .35s}
+.card:hover{transform:translateY(-3px);border-color:color-mix(in srgb,var(--accent) 45%,var(--line))}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:4px}
+.chips span{font-family:var(--mono);font-size:12px;padding:4px 10px;border-radius:999px;background:var(--bg-2);color:var(--muted)}
+
+/* nav */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;margin-inline:-20px;padding:14px 20px;background:color-mix(in srgb,var(--bg) 85%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav .w{display:flex;justify-content:space-between;align-items:center;gap:16px}
+.nav .me{font-family:var(--display);font-weight:600;font-size:15px;text-decoration:none}
+.nav .me b{color:var(--accent)}
+.nav nav{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+.nav nav a{text-decoration:none;font-size:14px;font-weight:600;color:var(--muted);padding:7px 12px;border-radius:999px;white-space:nowrap;transition:background .2s,color .2s}
+.nav nav a:hover{background:var(--accent-soft);color:var(--accent-ink)}
+
+/* sections */
+section.s{padding-block:110px 0;scroll-margin-top:60px}
+.sh{display:grid;gap:14px;margin-bottom:44px;max-width:720px}
+.sh h2{font-family:var(--display);font-weight:600;font-size:clamp(2rem,4.6vw,3.4rem);line-height:1.02;letter-spacing:-.035em}
+.sh h2 em{font-style:normal;color:var(--accent)}
+.sh p{color:var(--muted);font-size:1.05rem}
+
+/* hero */
+.hero{padding-block:90px 30px;display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:56px;align-items:end}
+.hero h1{font-family:var(--display);font-weight:700;font-size:clamp(2.7rem,7.2vw,5.8rem);line-height:.98;letter-spacing:-.045em;margin-top:18px}
+.hero h1 span{color:var(--accent)}
+.hero .pitch{font-size:1.2rem;color:var(--muted);max-width:50ch;margin-top:26px}
+.hero .pitch strong{color:var(--fg);font-weight:700}
+.btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.btn{display:inline-flex;align-items:center;gap:10px;font:700 15px var(--body);text-decoration:none;border-radius:14px;padding:14px 20px;border:1px solid var(--line);background:var(--card);color:var(--fg);cursor:pointer;transition:transform .2s,background .2s,border-color .2s}
+.btn:hover{transform:translateY(-2px);border-color:var(--accent)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-fg)}
+.btn svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.next{background:var(--deep);color:var(--deep-fg);border-color:var(--deep);gap:16px}
+.next .lbl{color:var(--deep-muted)}
+.next .co{font-family:var(--display);font-weight:600;font-size:1.6rem;letter-spacing:-.02em;line-height:1.1}
+.next .dates{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:10px;border-top:1px solid var(--deep-line);padding-top:16px}
+.next .dates div{display:grid}
+.next .dates b{font-family:var(--display);font-weight:600;font-size:1.25rem}
+.next .dates span{font-size:12.5px;color:var(--deep-muted)}
+.next .arrow{color:var(--accent)}
+.badge{display:inline-flex;align-items:center;gap:7px;align-self:flex-start;font-size:13px;font-weight:800;color:var(--accent-fg);background:var(--accent);border-radius:999px;padding:4px 12px}
+
+.strip{margin-top:60px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-block:1px solid var(--line)}
+.strip div{padding:26px 6px;display:grid;gap:4px}
+.strip div+div{border-left:1px solid var(--line);padding-left:24px}
+.strip b{font-family:var(--display);font-weight:600;font-size:1.5rem;letter-spacing:-.02em}
+.strip span{font-size:14px;color:var(--muted)}
+
+/* projects */
+.feature{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);gap:40px;background:var(--deep);color:var(--deep-fg);border-color:var(--deep);padding:40px}
+.feature .lbl,.feature .muted{color:var(--deep-muted)}
+.feature .chips span{background:color-mix(in srgb,var(--deep-fg) 8%,transparent);color:var(--deep-muted)}
+.feature>div{min-width:0;display:flex;flex-direction:column;gap:16px}
+.feature h3,.big3{font-family:var(--display);font-weight:600;font-size:clamp(1.4rem,2.6vw,2rem);line-height:1.12;letter-spacing:-.025em}
+.mine{list-style:none;margin:0;padding:0;display:grid;gap:8px;font-size:15.5px}
+.mine li{display:flex;gap:10px}
+.mine li::before{content:"";flex-shrink:0;width:8px;height:8px;margin-top:9px;border-radius:2px;background:var(--accent);transform:rotate(45deg)}
+.dia{background:color-mix(in srgb,var(--deep-fg) 4%,transparent);border:1px solid var(--deep-line);border-radius:16px;padding:16px;overflow-x:auto}
+.dia svg{display:block;width:100%;min-width:480px;height:auto}
+.n rect{fill:var(--deep);stroke:var(--deep-line);stroke-width:1.5}
+.n text{fill:var(--deep-fg);font-family:var(--body);font-size:14px;font-weight:800}
+.n .s{fill:var(--deep-muted);font-family:var(--mono);font-size:11px;font-weight:400}
+.n.me rect{fill:var(--accent);stroke:var(--accent)}
+.n.me text,.n.me .s{fill:var(--accent-fg)}
+.lk{stroke:var(--accent);stroke-width:2;fill:none;opacity:.7}
+.grp{fill:none;stroke:var(--deep-muted);stroke-dasharray:4 4;stroke-width:1}
+.glabel{fill:var(--deep-muted);font-family:var(--mono);font-size:11px}
+.key{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12px;color:var(--deep-muted);margin-top:12px}
+.key i{width:10px;height:10px;border-radius:3px;background:var(--accent)}
+.duo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:18px}
+.note{background:var(--bg-2);border-radius:14px;padding:14px 16px;display:grid;gap:3px;font-size:14.5px}
+.note b{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-ink)}
+.steps3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.steps3>div{border-top:2px solid var(--line);padding-top:12px;display:grid;gap:4px;align-content:start}
+.steps3>div:last-child{border-color:var(--accent)}
+.steps3 b{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+
+/* procedures */
+.procs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.proc .ref{display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:12px;color:var(--muted)}
+.proc .ref b{font-weight:500;color:var(--accent-ink);background:var(--accent-soft);border-radius:6px;padding:3px 9px}
+.proc ol{margin:0;padding:0;list-style:none;display:grid;counter-reset:e}
+.proc ol li{counter-increment:e;display:grid;grid-template-columns:70px 1fr;gap:8px;font-size:15px;padding-block:11px;border-top:1px solid var(--line)}
+.proc ol li::before{content:"Étape " counter(e);font-family:var(--mono);font-size:12px;color:var(--accent-ink);padding-top:2px}
+
+/* stages timeline */
+.tl{list-style:none;margin:0;padding:0;display:grid;gap:22px;position:relative}
+.tl::before{content:"";position:absolute;left:9px;top:12px;bottom:12px;width:2px;background:var(--line)}
+.tl>li{position:relative;padding-left:44px}
+.tl>li::before{content:"";position:absolute;left:2px;top:30px;width:16px;height:16px;border-radius:50%;background:var(--bg);border:3px solid var(--line)}
+.tl>li.up::before{border-color:var(--accent);background:var(--accent)}
+.tl>li.top::before{border-color:var(--accent)}
+.st{display:grid;grid-template-columns:200px minmax(0,1fr);gap:28px}
+.st .side{display:grid;gap:6px;align-content:start}
+.when{font-family:var(--mono);font-size:13px;font-weight:500;color:var(--accent-ink);background:var(--accent-soft);border-radius:8px;padding:4px 10px;justify-self:start}
+.up .when{background:var(--accent);color:var(--accent-fg)}
+.st .co{font-weight:800;font-size:15px}
+.st .where{font-size:14px;color:var(--muted)}
+.st .main{display:grid;gap:12px;min-width:0}
+.st ul{margin:0;padding:0;list-style:none;display:grid;gap:7px;font-size:15.5px}
+.st ul li{display:flex;gap:10px}
+.st ul li::before{content:"→";color:var(--accent);font-weight:800;flex-shrink:0}
+.up .card{border-style:dashed;border-color:color-mix(in srgb,var(--accent) 60%,var(--line))}
+
+/* skills */
+.skills{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.sk-h{display:flex;align-items:center;gap:12px}
+.ico{width:44px;height:44px;border-radius:14px;background:var(--accent-soft);display:grid;place-items:center;flex-shrink:0}
+.ico svg{width:22px;height:22px;stroke:var(--accent-ink);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.sk ul{list-style:none;margin:0;padding:0;display:grid}
+.sk li{display:flex;justify-content:space-between;gap:12px;font-size:15px;font-weight:600;padding-block:10px;border-top:1px solid var(--line)}
+.sk.wide{grid-column:1/-1}
+.sk ul.two{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:32px}
+.sk li span{font-family:var(--mono);font-size:12px;font-weight:400;color:var(--muted);text-align:right}
+
+.edu{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.edu .card .yr{font-family:var(--display);font-weight:600;font-size:1.3rem;color:var(--accent)}
+
+/* contact */
+.contact{margin-top:110px;background:var(--deep);color:var(--deep-fg);border-radius:30px;padding:72px 48px;display:grid;gap:30px;justify-items:center;text-align:center;scroll-margin-top:60px}
+.contact .lbl{color:var(--deep-muted)}
+.contact h2{font-family:var(--display);font-weight:600;font-size:clamp(2rem,5vw,3.6rem);line-height:1.02;letter-spacing:-.035em;max-width:16ch}
+.contact h2 em{font-style:normal;color:var(--accent)}
+.mailbox{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:center;background:color-mix(in srgb,var(--deep-fg) 6%,transparent);border:1px solid var(--deep-line);border-radius:20px;padding:10px 10px 10px 22px;max-width:100%}
+.mailbox .addr{font-family:var(--mono);font-size:clamp(.95rem,2.4vw,1.25rem);font-weight:500;word-break:break-all;user-select:all;min-width:0}
+.mailbox .btn{border-color:var(--accent)}
+.contact small{font-size:14px;color:var(--deep-muted)}
+.toast{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 24px);transform:translate(-50%,20px);opacity:0;pointer-events:none;background:var(--fg);color:var(--bg);font-weight:700;font-size:14px;border-radius:999px;padding:10px 18px;transition:opacity .25s,transform .25s;z-index:50}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+
+footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;padding-block:30px 40px;font-family:var(--mono);font-size:12.5px;color:var(--muted)}
+
+
+@keyframes up{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.hero>*{animation:up .8s cubic-bezier(.2,.8,.2,1) both}
+.hero>*:nth-child(2){animation-delay:.12s}
+
+@media (max-width:920px){
+  .hero,.feature{grid-template-columns:1fr}
+  .procs{grid-template-columns:1fr}
+  .duo,.skills,.edu{grid-template-columns:1fr}
+  .strip{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .strip div:nth-child(3){border-left:0;padding-left:6px}
+  .strip div:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  .st{grid-template-columns:1fr;gap:14px}
+}
+@media (max-width:600px){
+  .nav nav{display:none}
+  .hero{padding-block:48px 20px}
+  section.s{padding-block:80px 0}
+  .card,.feature{padding:22px}
+  .steps3{grid-template-columns:1fr}
+  .sk ul.two{grid-template-columns:1fr}
+  .contact{padding:48px 20px;margin-top:80px}
+  .tl>li{padding-left:32px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+
+<header class="nav">
+  <div class="w">
+    <a class="me" href="#top">Mathéo<b>.</b></a>
+    <nav aria-label="Sections"><a href="#projets">Projets</a><a href="#procedures">Procédures</a><a href="#stages">Stages</a><a href="#competences">Compétences</a><a href="#contact">Contact</a></nav>
+  </div>
+</header>
+
+<div class="w" id="top">
+
+  <div class="hero">
+    <div>
+      <span class="lbl">Technicien systèmes &amp; réseaux · BTS SIO SISR</span>
+      <h1>Mathéo Sannajust&#8209;Dias<span>.</span></h1>
+      <p class="pitch">Je câble, je déploie et je sécurise des infrastructures. <strong>Six stages</strong> en support et en administration, une <strong>maquette réseau complète</strong> montée en équipe et un <strong>SIEM</strong> installé de A à Z.</p>
+      <div class="btns">
+        <a class="btn primary" href="#projets">Voir mes projets
+          <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7"/></svg></a>
+        <button class="btn" id="hero-copy" type="button">
+          <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>Copier mon e-mail</button>
+      </div>
+    </div>
+    <div class="card next">
+      <span class="lbl">Prochain stage</span>
+      <span class="badge">✓ Confirmé</span>
+      <p class="co">Fideliance Digital</p>
+      <div class="dates">
+        <div><b>04 janv.</b><span>2027</span></div>
+        <span class="arrow">→</span>
+        <div style="text-align:right"><b>06 févr.</b><span>2027</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="strip">
+    <div><b>6 stages</b><span>en entreprise depuis 2022</span></div>
+    <div><b>3 procédures</b><span>rédigées pour le projet M2L</span></div>
+    <div><b>BTS SIO</b><span>option SISR, 2ᵉ année</span></div>
+    <div><b>Melun (77)</b><span>permis B, véhiculé</span></div>
+  </div>
+
+  <!-- PROJETS -->
+  <section class="s" id="projets">
+    <div class="sh">
+      <span class="lbl">Projets</span>
+      <h2>Ce que j'ai <em>construit</em></h2>
+      <p>Des infrastructures montées, configurées et documentées, à l'école comme sur mon temps libre.</p>
+    </div>
+
+    <article class="card feature">
+      <div>
+        <span class="lbl">Infrastructure · BTS SIO · équipe de 4</span>
+        <h3>Projet M2L : une infrastructure complète sur maquette</h3>
+        <p class="muted">À partir d'un cahier des charges : pare-feu, switch de niveau 3, virtualisation, annuaire, supervision et sécurité.</p>
+        <ul class="mine">
+          <li>Câblage et brassage de toute la maquette</li>
+          <li>Serveur TFTP de sauvegarde des configurations</li>
+          <li>Supervision sécurité avec Wazuh</li>
+          <li>Rédaction des procédures et suivi sur Trello</li>
+        </ul>
+        <div class="chips"><span>pfSense</span><span>Switch N3</span><span>Proxmox</span><span>Active Directory</span><span>DHCP</span><span>GLPI</span><span>Grafana</span><span>Wazuh</span><span>TFTP</span></div>
+      </div>
+      <div>
+        <div class="dia">
+          <svg viewBox="0 0 560 330" role="img" aria-label="Schéma simplifié de l'infrastructure M2L">
+            <g class="lk"><path d="M280 54 V84"/><path d="M280 126 V156"/><path d="M280 198 V222 H60 V248"/><path d="M280 222 H505 V248"/><path d="M150 222 V248"/><path d="M235 222 V248"/><path d="M320 222 V248"/><path d="M415 222 V248"/></g>
+            <g class="n"><rect x="215" y="14" width="130" height="40" rx="20"/><text x="280" y="39" text-anchor="middle">Internet</text></g>
+            <g class="n"><rect x="200" y="84" width="160" height="42" rx="10"/><text x="280" y="104" text-anchor="middle">pfSense</text><text class="s" x="280" y="119" text-anchor="middle">pare-feu · routage</text></g>
+            <g class="n"><rect x="180" y="156" width="200" height="42" rx="10"/><text x="280" y="176" text-anchor="middle">Switch niveau 3</text><text class="s" x="280" y="191" text-anchor="middle">VLAN · inter-VLAN</text></g>
+            <rect class="grp" x="8" y="236" width="544" height="88" rx="12"/>
+            <text class="glabel" x="18" y="318">Proxmox</text>
+            <g class="n"><rect x="18" y="248" width="84" height="52" rx="10"/><text x="60" y="271" text-anchor="middle">AD</text><text class="s" x="60" y="288" text-anchor="middle">DNS</text></g>
+            <g class="n"><rect x="110" y="248" width="80" height="52" rx="10"/><text x="150" y="271" text-anchor="middle">DHCP</text><text class="s" x="150" y="288" text-anchor="middle">adresses</text></g>
+            <g class="n"><rect x="198" y="248" width="74" height="52" rx="10"/><text x="235" y="271" text-anchor="middle">GLPI</text><text class="s" x="235" y="288" text-anchor="middle">parc</text></g>
+            <g class="n"><rect x="280" y="248" width="80" height="52" rx="10"/><text x="320" y="271" text-anchor="middle">Grafana</text><text class="s" x="320" y="288" text-anchor="middle">métriques</text></g>
+            <g class="n me"><rect x="368" y="248" width="94" height="52" rx="10"/><text x="415" y="271" text-anchor="middle">Wazuh</text><text class="s" x="415" y="288" text-anchor="middle">SIEM</text></g>
+            <g class="n me"><rect x="470" y="248" width="72" height="52" rx="10"/><text x="506" y="271" text-anchor="middle">TFTP</text><text class="s" x="506" y="288" text-anchor="middle">backup</text></g>
+          </svg>
+          <div class="key"><i></i>Câblage, Wazuh et TFTP : mes parties</div>
+        </div>
+      </div>
+    </article>
+
+    <div class="duo">
+      <article class="card">
+        <span class="lbl">Sécurité · lab BTS SIO</span>
+        <h3 class="big3">SIEM-XDR Wazuh</h3>
+        <p class="muted">Centraliser les journaux de sécurité d'une entreprise fictive et détecter les comportements suspects. J'ai pris en charge l'installation du serveur.</p>
+        <div class="note"><b>Problème résolu</b><p>Un paquet requis manquait sur Debian 13. J'ai basculé sur Ubuntu Server 24.04, une base officiellement supportée par Wazuh.</p></div>
+        <div class="chips"><span>Wazuh</span><span>Ubuntu Server 24.04</span><span>Agents</span></div>
+      </article>
+      <article class="card">
+        <span class="lbl">Infrastructure · perso</span>
+        <h3 class="big3">Serveur Debian en production</h3>
+        <p class="muted">J'administre seul un VPS Debian 13 qui héberge plusieurs services : accès SSH, reverse proxy Caddy avec certificats TLS automatiques et gestion DNS de plusieurs domaines.</p>
+        <div class="chips"><span>Debian 13</span><span>SSH</span><span>Caddy</span><span>DNS</span><span>TLS</span></div>
+      </article>
+    </div>
+
+    <article class="card" style="margin-top:18px">
+      <span class="lbl">Intervention client · Fideliance Digital</span>
+      <h3 class="big3">Faille Kali365 : protéger les comptes d'un client</h3>
+      <div class="steps3">
+        <div><b>Contexte</b><p>Client exposé à la faille Kali365 sur son environnement Microsoft.</p></div>
+        <div><b>Action</b><p>Blocage dans Entra ID et renforcement de la double authentification.</p></div>
+        <div><b>Résultat</b><p>Comptes du client protégés contre cette menace.</p></div>
+      </div>
+    </article>
+  </section>
+
+  <!-- PROCÉDURES -->
+  <section class="s" id="procedures">
+    <div class="sh">
+      <span class="lbl">Documentation</span>
+      <h2>Mes <em>procédures</em></h2>
+      <p>Rédigées pour le projet M2L, pour que n'importe qui dans l'équipe puisse refaire l'installation.</p>
+    </div>
+    <div class="procs">
+      <article class="card proc">
+        <div class="ref"><b>Procédure technique</b><span>M2L</span></div>
+        <h3>Mise en place du serveur TFTP</h3>
+        <ol><li>Installation du service</li><li>Droits et répertoire de stockage</li><li>Sauvegarde des configs Cisco</li><li>Test de restauration</li></ol>
+      </article>
+      <article class="card proc">
+        <div class="ref"><b>Procédure technique</b><span>M2L</span></div>
+        <h3>Installation du serveur Wazuh</h3>
+        <ol><li>Préparation de la VM</li><li>Serveur, indexeur, dashboard</li><li>Déploiement des agents</li><li>Vérification des alertes</li></ol>
+      </article>
+      <article class="card proc">
+        <div class="ref"><b>Procédure technique</b><span>M2L</span></div>
+        <h3>Câblage et brassage de la maquette</h3>
+        <ol><li>Plan de câblage</li><li>Brassage des équipements</li><li>Étiquetage</li><li>Tests de connectivité</li></ol>
+      </article>
+    </div>
+  </section>
+
+  <!-- STAGES -->
+  <section class="s" id="stages">
+    <div class="sh">
+      <span class="lbl">Expérience</span>
+      <h2>Six stages, <em>sur le terrain</em></h2>
+      <p>Du dépannage en atelier à la gestion d'un parc dans Intune, en passant par l'administration réseau.</p>
+    </div>
+    <ol class="tl">
+      <li class="up">
+        <article class="card st">
+          <div class="side"><span class="when">Janv. – Févr. 2027</span><span class="co">Fideliance Digital</span><span class="where">Avon (77) · à venir</span></div>
+          <div class="main"><h3>Stage de 2ᵉ année de BTS SIO</h3><p class="muted">Retour chez Fideliance Digital, entreprise de services informatiques, pour cinq semaines.</p></div>
+        </article>
+      </li>
+      <li class="top">
+        <article class="card st">
+          <div class="side"><span class="when">Mai – Juin 2026</span><span class="co">Fideliance Digital</span><span class="where">Avon (77) · stage de 1ʳᵉ année</span></div>
+          <div class="main">
+            <h3>Technicien informatique</h3>
+            <ul>
+              <li>Support utilisateur et dépannage sur site client</li>
+              <li>Déploiement de postes Windows 10/11</li>
+              <li>Administration de serveurs Debian</li>
+              <li>Virtualisation de serveurs sous Hyper-V</li>
+              <li>Gestion du parc avec Microsoft Intune et Azure AD Connect</li>
+              <li>Sécurisation des clients : NAS, double authentification, blocage Entra ID face à la faille Kali365</li>
+            </ul>
+            <div class="chips"><span>Intune</span><span>Azure AD Connect</span><span>Entra ID</span><span>Hyper-V</span><span>Debian</span><span>Windows 11</span></div>
+          </div>
+        </article>
+      </li>
+      <li>
+        <article class="card st">
+          <div class="side"><span class="when">Mai – Juil. 2025</span><span class="co">Info 26</span><span class="where">Paris</span></div>
+          <div class="main">
+            <h3>Technicien support &amp; réseau</h3>
+            <ul><li>Support utilisateur de niveau 2 : diagnostic et résolution des incidents</li><li>Administration et maintenance courante du réseau</li></ul>
+            <div class="chips"><span>Support N2</span><span>Réseau</span></div>
+          </div>
+        </article>
+      </li>
+      <li>
+        <article class="card st">
+          <div class="side"><span class="when">Déc. 2023 – Janv. 2024</span><span class="co">Fideliance Digital</span><span class="where">Avon (77)</span></div>
+          <div class="main">
+            <h3>Technicien informatique</h3>
+            <ul><li>Préparation et installation des postes de travail</li><li>Assistance aux utilisateurs à distance</li><li>Configuration d'équipements réseau de base</li></ul>
+            <div class="chips"><span>Masterisation</span><span>Assistance à distance</span><span>Réseau</span></div>
+          </div>
+        </article>
+      </li>
+      <li>
+        <article class="card st">
+          <div class="side"><span class="when">Juin 2023</span><span class="co">OPH 77</span><span class="where">Melun</span></div>
+          <div class="main"><h3>Administration réseau</h3><ul><li>Administration et maintenance du réseau interne</li></ul></div>
+        </article>
+      </li>
+      <li>
+        <article class="card st">
+          <div class="side"><span class="when">Oct. 2022</span><span class="co">Info 26</span><span class="where">Paris</span></div>
+          <div class="main"><h3>Technicien parc informatique</h3><ul><li>Administration des postes en environnement scolaire</li></ul></div>
+        </article>
+      </li>
+      <li>
+        <article class="card st">
+          <div class="side"><span class="when">Mars 2022</span><span class="co">Clinique Mobile et Info</span><span class="where">Melun</span></div>
+          <div class="main"><h3>Réparation &amp; SAV</h3><ul><li>Diagnostic et réparation de smartphones et PC</li><li>Réinstallation de Windows</li></ul></div>
+        </article>
+      </li>
+    </ol>
+  </section>
+
+  <!-- COMPÉTENCES -->
+  <section class="s" id="competences">
+    <div class="sh">
+      <span class="lbl">Compétences</span>
+      <h2>Mes <em>outils</em></h2>
+      <p>Ce que j'ai réellement fait en stage et en projet, avec l'endroit où je l'ai pratiqué.</p>
+    </div>
+    <div class="skills">
+      <div class="card sk">
+        <div class="sk-h"><span class="ico"><svg viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="5" rx="1"/><rect x="2" y="16" width="6" height="5" rx="1"/><rect x="16" y="16" width="6" height="5" rx="1"/><path d="M12 8v4M5 16v-4h14v4"/></svg></span><h3>Réseau</h3></div>
+        <ul><li>Administration de réseau interne<span>OPH 77 · Info 26</span></li><li>Configuration d'équipements réseau<span>Fideliance</span></li><li>TCP/IP · VLAN · DHCP · DNS<span>M2L</span></li><li>pfSense<span>M2L</span></li><li>Cisco IOS · TFTP<span>M2L</span></li><li>Câblage et brassage<span>M2L</span></li></ul>
+      </div>
+      <div class="card sk">
+        <div class="sk-h"><span class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01"/></svg></span><h3>Systèmes</h3></div>
+        <ul><li>Déploiement Windows 10/11<span>Fideliance</span></li><li>Administration de serveurs Debian<span>Fideliance · VPS</span></li><li>Windows Server<span>BTS</span></li><li>Active Directory · GPO<span>M2L · BTS</span></li><li>Ubuntu Server<span>Wazuh</span></li></ul>
+      </div>
+      <div class="card sk">
+        <div class="sk-h"><span class="ico"><svg viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg></span><h3>Sécurité</h3></div>
+        <ul><li>Blocage d'accès Entra ID<span>Fideliance</span></li><li>Double authentification<span>Fideliance</span></li><li>Sécurisation de NAS<span>Fideliance</span></li><li>Wazuh (SIEM-XDR)<span>Lab · M2L</span></li><li>Reverse proxy Caddy · TLS<span>VPS</span></li></ul>
+      </div>
+      <div class="card sk">
+        <div class="sk-h"><span class="ico"><svg viewBox="0 0 24 24"><path d="M12 3l9 5-9 5-9-5z"/><path d="M3 13l9 5 9-5"/></svg></span><h3>Parc &amp; virtualisation</h3></div>
+        <ul><li>Microsoft Intune<span>Fideliance</span></li><li>Azure AD Connect<span>Fideliance</span></li><li>Virtualisation Hyper-V<span>Fideliance</span></li><li>Proxmox<span>M2L</span></li><li>GLPI<span>M2L</span></li></ul>
+      </div>
+      <div class="card sk wide">
+        <div class="sk-h"><span class="ico"><svg viewBox="0 0 24 24"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="2" y="14" width="5" height="6" rx="2"/><rect x="17" y="14" width="5" height="6" rx="2"/></svg></span><h3>Support &amp; terrain</h3></div>
+        <ul class="two"><li>Dépannage sur site client<span>Fideliance</span></li><li>Support utilisateur niveau 2<span>Info 26</span></li><li>Assistance à distance<span>Fideliance</span></li><li>Préparation et masterisation de postes<span>Fideliance</span></li><li>Gestion d'un parc en milieu scolaire<span>Info 26</span></li><li>Diagnostic et réparation PC, smartphones<span>Clinique Mobile</span></li><li>Réinstallation de Windows<span>Clinique Mobile</span></li><li>Relation avec l'utilisateur<span>Tous les stages</span></li></ul>
+      </div>
+      <div class="card sk wide">
+        <div class="sk-h"><span class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="8" rx="2"/><rect x="3" y="13" width="18" height="8" rx="2"/><path d="M7 7h.01M7 17h.01M11 7h6M11 17h6"/></svg></span><h3>Auto-hébergement &amp; projets perso</h3></div>
+        <ul class="two"><li>Administration d'un VPS Debian 13<span>Projet perso</span></li><li>Accès SSH sécurisé<span>Projet perso</span></li><li>Reverse proxy Caddy multi-domaines<span>Projet perso</span></li><li>Certificats HTTPS automatiques<span>Projet perso</span></li><li>Gestion DNS et sous-domaines<span>Projet perso</span></li><li>Déploiement de services par script<span>Projet perso</span></li><li>Contrôle d'accès par rôles et liste blanche IP<span>Projet perso</span></li><li>Géoblocage et journal d'audit<span>Projet perso</span></li><li>Restrictions de terminaux Android (mode kiosque)<span>Projet perso</span></li><li>Versionnement Git / GitHub<span>Projet perso</span></li></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORMATION -->
+  <section class="s" id="formation">
+    <div class="sh"><span class="lbl">Formation</span><h2>Mon <em>parcours</em></h2></div>
+    <div class="edu">
+      <div class="card"><span class="yr">2025 – 2027</span><h3>BTS SIO option SISR</h3><p class="muted">Campus Saint-Aspais, Melun · 2ᵉ année en cours</p></div>
+      <div class="card"><span class="yr">2023</span><h3>Bac Pro Systèmes Numériques, option RISC</h3><p class="muted">Melun · mention assez bien</p></div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <span class="lbl">Contact</span>
+    <h2>Une question ? <em>Écrivez-moi.</em></h2>
+    <div class="mailbox">
+      <span class="addr" id="mail">matheo.sannajustdias@gmail.com</span>
+      <button class="btn primary" id="mail-copy" type="button">
+        <svg viewBox="0 0 24 24"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Copier</span></button>
+    </div>
+    <small>Basé à Melun (77) · permis B, véhiculé</small>
+  </section>
+
+  <footer><span>Mathéo Sannajust-Dias</span><span>Technicien systèmes &amp; réseaux</span></footer>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite">E-mail copié</div>
+
+<script>
+(function(){
+  var mail=document.getElementById('mail'), toast=document.getElementById('toast'), t;
+  function show(msg){toast.textContent=msg;toast.classList.add('on');clearTimeout(t);t=setTimeout(function(){toast.classList.remove('on')},1800)}
+  function copy(btn){
+    var txt=mail.textContent.trim();
+    function ok(){show('E-mail copié');if(btn&&btn.id==='mail-copy'){btn.querySelector('span').textContent='Copié';setTimeout(function(){btn.querySelector('span').textContent='Copier'},1800)}}
+    function sel(){var r=document.createRange();r.selectNodeContents(mail);var s=getSelection();s.removeAllRanges();s.addRange(r);show('Adresse sélectionnée, fais Ctrl+C')}
+    try{navigator.clipboard.writeText(txt).then(ok,sel)}catch(e){sel()}
+  }
+  document.getElementById('mail-copy').addEventListener('click',function(){copy(this)});
+  document.getElementById('hero-copy').addEventListener('click',function(){copy(this)});
+})();
+</script>
+
+</body>
+</html>
